@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <!-- Im here -->
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="calculator" name="calc">
+     <input type="text" readonly class="value" value="0" id="screen" name="txt">
+     <span class="num clear" onclick="clearBtn()">c</span>
+     <span class="num" onclick="operate('/')">÷</span>
+     <span class="num" onclick="operate('*')">x</span>
+     <span class="num" onclick="button(7)">7</span>
+     <span class="num" onclick="button(8)">8</span>
+     <span class="num" onclick="button(9)">9</span>
+     <span class="num" onclick="operate('-')">-</span>
+     <span class="num" onclick="button(4)">4</span>
+     <span class="num" onclick="button(5)">5</span>
+     <span class="num" onclick="button(6)">6</span>
+     <span class="num add" onclick="operate('+')">+</span>
+     <span class="num" onclick="button(1)">1</span>
+     <span class="num" onclick="button(2)">2</span>
+     <span class="num" onclick="button(3)">3</span>
+     <span class="num" onclick="button(0)">0</span>
+     <span class="num" onclick="button('00')">00</span>
+     <span class="num" onclick="button('.')">.</span>
+     <span class="num equal" onclick="equal()">=</span>
+      </form>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
