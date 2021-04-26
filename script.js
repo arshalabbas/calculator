@@ -1,5 +1,5 @@
 const screen = document.getElementById("screen");
-const container = document.querySelector(".calculator");
+const subScreen = document.getElementById("sub-screen");
 
 //variables
 var number;
@@ -15,8 +15,10 @@ function clearAllData() {
 function classModify(className, type) {
     if (type === "add") {
         screen.classList.add(className);
+        subScreen.classList.add(className);
     } else if (type === "remove") {
         screen.classList.remove(className);
+        subScreen.classList.remove(className);
     }
 }
 
@@ -38,6 +40,13 @@ function operate(sign) {
         number = result;
         operateSign = sign;
     }
+    if (sign === "/") {
+        subScreen.value = number+"÷";
+    } else if (sign === "*") {
+        subScreen.value = number+"x";
+    } else {
+        subScreen.value = number+sign;
+    }
     screen.value = 0;
 }
 
@@ -49,11 +58,13 @@ function equal() {
     setTimeout(() => {
         classModify("result-animation", "remove");
     }, 500);
+    subScreen.value = final;
     clearAllData();
 }
 
 function clearBtn() {
     screen.value = 0;
+    subScreen.value = "";
     clearAllData();
     classModify("clear-animation", "add");
     setTimeout(() => {
