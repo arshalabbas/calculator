@@ -40,6 +40,7 @@ function operate(sign) {
         number = result;
         operateSign = sign;
     }
+    subScreen.classList.add("sub-screen-animation");
     if (sign === "/") {
         subScreen.value = number+"÷";
     } else if (sign === "*") {
@@ -47,6 +48,9 @@ function operate(sign) {
     } else {
         subScreen.value = number+sign;
     }
+    setTimeout(() => {
+        subScreen.classList.remove("sub-screen-animation");
+    }, 400);
     screen.value = 0;
 }
 
@@ -54,9 +58,11 @@ function equal() {
     if (!number) return;
     var final = eval(number + operateSign + screen.value);
     classModify("result-animation", "add");
+    subScreen.classList.add("sub-screen-animation");
     screen.value = final;
     setTimeout(() => {
         classModify("result-animation", "remove");
+        subScreen.classList.remove("sub-screen-animation");
     }, 500);
     subScreen.value = final;
     clearAllData();

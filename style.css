@@ -117,6 +117,10 @@ body::after{
   animation: result 1s ease;
 }
 
+.sub-screen-animation {
+  animation: sub-animation 0.3s ease;
+}
+
 @keyframes result {
   0% {
     clip-path: circle(10% at 100% 100%);
@@ -126,5 +130,14 @@ body::after{
   }
   100% {
     clip-path: 0%;
+  }
+}
+
+@keyframes sub-animation {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
