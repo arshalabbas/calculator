@@ -1,4 +1,5 @@
 const screen = document.getElementById("screen");
+const container = document.querySelector(".calculator");
 
 //variables
 var number;
@@ -9,6 +10,14 @@ function clearAllData() {
     operateSign = null;
     number = null;
     ready = false;
+}
+
+function classModify(className, type) {
+    if (type === "add") {
+        screen.classList.add(className);
+    } else if (type === "remove") {
+        screen.classList.remove(className);
+    }
 }
 
 //print numbers
@@ -35,11 +44,19 @@ function operate(sign) {
 function equal() {
     if (!number) return;
     var final = eval(number + operateSign + screen.value);
+    classModify("result-animation", "add");
     screen.value = final;
+    setTimeout(() => {
+        classModify("result-animation", "remove");
+    }, 500);
     clearAllData();
 }
 
 function clearBtn() {
     screen.value = 0;
     clearAllData();
+    classModify("clear-animation", "add");
+    setTimeout(() => {
+        classModify("clear-animation", "remove");
+    }, 500);
 }
