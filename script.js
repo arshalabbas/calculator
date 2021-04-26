@@ -6,6 +6,10 @@ var number;
 var operateSign;
 var ready;
 
+//operation keys
+const keys = ["/", "*", "-", "+"];
+
+//common functions
 function clearAllData() {
     operateSign = null;
     number = null;
@@ -24,6 +28,7 @@ function classModify(className, type) {
 
 //print numbers
 function button(number) {
+    if (number === "." && screen.value.includes(".")) return;
     if (screen.value == 0) screen.value = "";
     screen.value += number;
     ready = true;
@@ -58,11 +63,9 @@ function equal() {
     if (!number) return;
     var final = eval(number + operateSign + screen.value);
     classModify("result-animation", "add");
-    subScreen.classList.add("sub-screen-animation");
     screen.value = final;
     setTimeout(() => {
         classModify("result-animation", "remove");
-        subScreen.classList.remove("sub-screen-animation");
     }, 500);
     subScreen.value = final;
     clearAllData();
@@ -77,3 +80,17 @@ function clearBtn() {
         classModify("clear-animation", "remove");
     }, 500);
 }
+
+document.addEventListener("keypress", () => {
+    if (!isNaN(event.key)) {
+        button(event.key);
+    } else if (event.key === ".") {
+        button(event.key);
+    } else if (event.key === "Enter" || event.key === "=") {
+        equal();
+    } else if(event.key.toLowerCase() === "c" || event.key === "Delete") {
+        clearBtn();
+    } else if (keys.includes(event.key)) {
+        operate(event.key);
+    }
+});
